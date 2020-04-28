@@ -1,5 +1,9 @@
 .App {
-  text-align: center;
+  max-width: 1200px;
+  width: 100%;
+  height: 100%;
+  max-height: 900px;
+  margin: 0 auto;
 }
 
 .App-logo {
@@ -7,11 +11,6 @@
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 
 .App-header {
   background-color: #282c34;
@@ -24,15 +23,266 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.game{
+  display: grid;
+  grid-template-columns: 400px 800px;
+  grid-template-rows: 600px;
+}
+.numbers-list{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 175px;
+}
+.sigma-img {
+  position: absolute;
+  width: 400px;
+  left: -470px;
+  top: 15px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.number{
+  background-color: #1cb4c2e0;
+  padding: 10px 20px;
+  font-size: 40px;
+  font-weight: bold;
+  color: azure;
+  border-radius: 50%;
+  outline: none;
+  cursor: pointer;
+  border: 2px solid white;
+  margin: 0 5px;
+}
+
+
+.text-center{
+  text-align: center;
+}
+
+@import url("https://fonts.googleapis.com/css?family=Exo+2:900");
+
+.container {
+  position: relative;
+  display: -webkit-box;
+  display: flex;
+  align-content: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#00c9ff), to(#92fe9d)), url(https://images.unsplash.com/photo-1502726299822-6f583f972e02);
+  background-image: linear-gradient(to bottom, #00c9ff 0%, #92fe9d 100%), url(https://images.unsplash.com/photo-1502726299822-6f583f972e02);
+  background-blend-mode: multiply;
+  background-size: cover;
+  overflow: hidden;
+  min-height: 600px;
+  margin-bottom: 50px;
+}
+
+.bubbles-container {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 100%;
+  max-width: 15rem;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  opacity: 0.75;
+  overflow: visible;
+}
+
+.bubbles {
+  width: 100%;
+  height: auto;
+}
+.bubbles circle {
+  stroke: white;
+  fill: none;
+}
+.bubbles > g > g:nth-of-type(3n) circle {
+  stroke: #87f5fb;
+}
+.bubbles > g > g:nth-of-type(4n) circle {
+  stroke: #8be8cb;
+}
+
+.bubbles-large {
+  overflow: visible;
+}
+.bubbles-large > g {
+  -webkit-transform: translateY(2048px);
+  transform: translateY(2048px);
+  opacity: 0;
+  will-change: transform, opacity;
+}
+.bubbles-large g:nth-of-type(1) {
+  -webkit-animation: up 6.5s forwards;
+  animation: up 6.5s forwards;
+}
+.bubbles-large g:nth-of-type(1) g {
+  -webkit-transform: translateX(350px);
+  transform: translateX(350px);
+}
+.bubbles-large g:nth-of-type(1) circle {
+  -webkit-animation: wobble 3s forwards ease-in-out;
+  animation: wobble 3s forwards ease-in-out;
+}
+.bubbles-large g:nth-of-type(2) {
+  -webkit-animation: up 5.25s 250ms forwards;
+  animation: up 5.25s 250ms forwards;
+}
+.bubbles-large g:nth-of-type(2) g {
+  -webkit-transform: translateX(450px);
+  transform: translateX(450px);
+}
+.bubbles-large g:nth-of-type(2) circle {
+  -webkit-animation: wobble 3s forwards ease-in-out;
+  animation: wobble 3s forwards ease-in-out;
+}
+.bubbles-large g:nth-of-type(3) {
+  -webkit-animation: up 6s 750ms forwards;
+  animation: up 6s 750ms forwards;
+}
+.bubbles-large g:nth-of-type(3) g {
+  -webkit-transform: translateX(700px);
+  transform: translateX(700px);
+}
+.bubbles-large g:nth-of-type(3) circle {
+  -webkit-animation: wobble 3s forwards ease-in-out;
+  animation: wobble 3s forwards ease-in-out;
+}
+.bubbles-large g:nth-of-type(4) {
+  -webkit-animation: up 5.5s 1.5s forwards;
+  animation: up 5.5s 1.5s forwards;
+}
+.bubbles-large g:nth-of-type(4) g {
+  -webkit-transform: translateX(500px);
+  transform: translateX(500px);
+}
+.bubbles-large g:nth-of-type(4) circle {
+  -webkit-animation: wobble 3s forwards ease-in-out;
+  animation: wobble 3s forwards ease-in-out;
+}
+.bubbles-large g:nth-of-type(5) {
+  -webkit-animation: up 6.5s 4s forwards;
+  animation: up 6.5s 4s forwards;
+}
+.bubbles-large g:nth-of-type(5) g {
+  -webkit-transform: translateX(675px);
+  transform: translateX(675px);
+}
+.bubbles-large g:nth-of-type(5) circle {
+  -webkit-animation: wobble 3s forwards ease-in-out;
+  animation: wobble 3s forwards ease-in-out;
+}
+
+.bubbles-large g:nth-of-type(6) {
+  -webkit-animation: up 7.5s 1s forwards;
+  animation: up 7.5s 1s forwards;
+}
+.bubbles-large g:nth-of-type(6) g {
+  -webkit-transform: translateX(555px);
+  transform: translateX(555px);
+}
+.bubbles-large g:nth-of-type(6) circle {
+  -webkit-animation: wobble 3s forwards ease-in-out;
+  animation: wobble 3s forwards ease-in-out;
+}
+
+.bubbles-large g:nth-of-type(7) {
+  -webkit-animation: up 7s 1s forwards;
+  animation: up 7s 1s forwards;
+}
+.bubbles-large g:nth-of-type(7) g {
+  -webkit-transform: translateX(250px);
+  transform: translateX(250px);
+}
+.bubbles-large g:nth-of-type(7) circle {
+  -webkit-animation: wobble 3s forwards ease-in-out;
+  animation: wobble 3s forwards ease-in-out;
+}
+
+
+@-webkit-keyframes wobble {
+  33% {
+    -webkit-transform: translateX(-50px);
+    transform: translateX(-50px);
   }
-  to {
-    transform: rotate(360deg);
+  66% {
+    -webkit-transform: translateX(50px);
+    transform: translateX(50px);
   }
 }
+
+@keyframes wobble {
+  33% {
+    -webkit-transform: translateX(-50px);
+    transform: translateX(-50px);
+  }
+  66% {
+    -webkit-transform: translateX(50px);
+    transform: translateX(50px);
+  }
+}
+@-webkit-keyframes up {
+  0% {
+    opacity: 0;
+  }
+  10%, 90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translateY(-1024px);
+    transform: translateY(-1024px);
+  }
+}
+@keyframes up {
+  0% {
+    opacity: 0;
+  }
+  10%, 90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translateY(-1024px);
+    transform: translateY(-1024px);
+  }
+}
+
+h1.win, h1.lose {
+  font-size: 65px;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: normal;
+
+  margin: 0;
+  transform-origin: 50% 100%;
+  text-shadow: 2px 2px 2px #333;
+
+  animation-duration: .8s;
+  animation-name: fadeAndScale;
+  animation-timing-function: cubic-bezier(.71,.55,.62,1.57);
+}
+.results{
+  position: absolute;
+  top: 245px;
+  color: #FFF;
+}
+.result-line{
+
+}
+
+@keyframes fadeAndScale {
+  from {
+    opacity: 0;
+    transform: scale(.9, .9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1, 1);
+  }
+}
+
+
+
+
