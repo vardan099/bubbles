@@ -4,7 +4,11 @@ const GameHeader = ()=>{
     return(
         <header>
             <h1 className="text-center">FIKA BUBBLES FUN</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet asperiores assumenda autem distinctio doloremque ducimus est facilis, laboriosam libero maiores neque nihil odio perferendis placeat qui recusandae reprehenderit soluta voluptatibus.</p>
+            <p>
+                According to legend, bubbles appear from the depths of the ocean every 15 seconds.
+                Try to guess how many bubbles will appear this time (from 0 to 9).
+                You can choose from one to 5 numbers but the more you choose the less points you get.
+            </p>
         </header>
     )
 };

@@ -34,6 +34,7 @@
   justify-content: center;
   margin-top: 175px;
 }
+
 .sigma-img {
   position: absolute;
   width: 400px;
@@ -52,6 +53,14 @@
   cursor: pointer;
   border: 2px solid white;
   margin: 0 5px;
+}
+button.selected{
+    border: 2px solid #b23235;
+    color: #b23235;
+}
+
+.react-countdown-clock{
+    margin-top: 15px;
 }
 
 

@@ -1,12 +1,13 @@
 import React from 'react';
 
 const Number = (props) => {
-    const {number, clickHandler} = props;
+    const {number, clickHandler, selected} = props;
+    console.log(selected);
     const handleClick = () => {
         clickHandler(number);
     };
     return (
-        <button className="number" onClick={handleClick}>{number}</button>
+        <button className={selected?"number selected": "number"} onClick={handleClick}>{number}</button>
     )
 };
 

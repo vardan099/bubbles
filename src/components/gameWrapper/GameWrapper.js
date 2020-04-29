@@ -89,7 +89,9 @@ const GameWrapper = () => {
 
 
     const selectNumberHandler = (number) => {
-        updateSelectedNumbers(player.selectedNumbers, number);
+        if(player.selectedNumbers.length < 5){
+            updateSelectedNumbers(player.selectedNumbers, number);
+        }
     };
 
     const toggleGame = () => {
@@ -109,6 +111,10 @@ const GameWrapper = () => {
         }
         return bubbles
     };
+
+    const isNumberSelected = (number) => {
+        return player.selectedNumbers.includes(number)
+    }
 
 
     return (
@@ -146,7 +152,8 @@ const GameWrapper = () => {
 
                     <div className="numbers-list">
                         {numbers.map((value, index) => {
-                                return <Number clickHandler={selectNumberHandler} key={index} number={value}/>
+                                return <Number clickHandler={selectNumberHandler} selected={isNumberSelected(value)}
+                                               key={index} number={value}/>
                             }
                         )}
                     </div>
