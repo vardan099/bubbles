@@ -257,6 +257,11 @@ button.selected{
     transform: translateY(-1024px);
   }
 }
+.magic{
+    color: #b23235;
+    font-size: 20px;
+    font-weight: bolder;
+}
 
 h1.win, h1.lose {
   font-size: 65px;
@@ -277,7 +282,11 @@ h1.win, h1.lose {
   top: 245px;
   color: #FFF;
 }
-.result-line{
+.score{
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    font-size: 30px;
 
 }
 

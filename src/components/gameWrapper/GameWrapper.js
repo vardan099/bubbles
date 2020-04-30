@@ -13,7 +13,7 @@ const GameWrapper = () => {
     const [game, setGame] = useState({
         started: false,
         gameNumber: null,
-        gamesCount: 1,
+        gamesCount: 0,
         duration: null,
         status: ''
     });
@@ -28,11 +28,12 @@ const GameWrapper = () => {
     };
 
 
-    const updateGameScore = () => {
+    const updateGameScore = (points) => {
+        const newScore = player.score+points;
         clearTimeout(timeout);
         setBubblesCount(0);
         const duration = game.duration && game.duration < 16 ? game.duration + 1 : 15;
-        setPlayer({...player, selectedNumbers: []});
+        setPlayer({...player, selectedNumbers: [], score: newScore});
         const randomNumber = Math.floor(Math.random() * 10);
         setGame({
             ...game,
@@ -41,10 +42,17 @@ const GameWrapper = () => {
             duration: duration,
             status: ''
         });
+
+        setTimeout(()=>{
+            if(newScore > 100) {
+                window.location.href = "https://www.youtube.com/watch?v=-kU8Xv2CYJM"
+            }
+        }, 10)
+
     };
 
     useEffect(() => {
-        updateGameScore();
+        updateGameScore(0);
     }, []);
 
 
@@ -65,8 +73,8 @@ const GameWrapper = () => {
     };
 
     const checkNumbers = () => {
-        console.log(game, player);
         setBubblesCount(game.gameNumber);
+        let points = 0;
 
         if (player.selectedNumbers.includes(game.gameNumber)) {
             setGame({
@@ -74,6 +82,7 @@ const GameWrapper = () => {
                 status: 'win',
                 duration: null,
             });
+            points = Math.floor(100/player.selectedNumbers.length)
         } else {
             setGame({
                 ...game,
@@ -82,8 +91,8 @@ const GameWrapper = () => {
             });
         }
         timeout = setTimeout(() => {
-            updateGameScore();
-        }, 10000)
+            updateGameScore(points);
+        }, 5000)
 
     };
 
@@ -94,10 +103,6 @@ const GameWrapper = () => {
         }
     };
 
-    const toggleGame = () => {
-        setGame({...game, started: !game.started});
-        updateGameScore()
-    };
 
     const fillBubbles = (count) => {
         let bubbles = [];
@@ -121,6 +126,11 @@ const GameWrapper = () => {
         <>
             <GameHeader/>
             <div className="container">
+                <div className="score">
+                    <span >Points: {player.score}</span><br/>
+                    <span >Games: {game.gamesCount}</span>
+
+                </div>
                 {
                     game.duration && <ReactCountdownClock seconds={game.duration} color="#000" alpha={0.5}
                                                           size={150}
